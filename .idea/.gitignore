@@ -1,2 +1,7 @@
+/.gitignore
+
 # Default ignored files
-/workspace.xml
+/*.xml
+
+# Others
+/.name
