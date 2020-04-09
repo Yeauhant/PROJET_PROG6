@@ -28,16 +28,26 @@ public class Plateau {
 		if(ligne >= hauteur || ligne < 0 || colonne >= largeur || colonne < 0) {
 			System.out.println("il faut jouer sur le plateau !");
 		}
-		if(valeur_case(ligne,colonne)) {
-			for(int i = ligne ; i < hauteur ; i++) {
-				for(int j = colonne ; j < largeur ; j++) {
-					tab[i][j] = false;
+		else {
+			if(valeur_case(ligne,colonne)) {
+				for(int i = ligne ; i < hauteur ; i++) {
+					for(int j = colonne ; j < largeur ; j++) {
+						tab[i][j] = false;
+					}
 				}
 			}
+			else {
+				System.out.println("cette case est deja mangée !");
+			}
 		}
-		else {
-			System.out.println("cette case est deja mangée !");
-		}
+	}
+	
+	public int get_hauteur() {
+		return hauteur;
+	}
+	
+	public int get_largeur() {
+		return largeur;
 	}
 	
 	public boolean fini(){
