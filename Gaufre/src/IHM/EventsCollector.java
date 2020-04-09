@@ -1,7 +1,7 @@
 package IHM;
 
 
-public interface EvenmentsCollector {
+public interface EventsCollector {
 	boolean MouseClick(int l, int c);
 	boolean endGame();
 }

@@ -4,7 +4,7 @@ import Arbitre.Board;
 import Arbitre.ControlMediator;
 import Arbitre.HumanPlayer;
 import Arbitre.Player;
-import IHM.EvenmentsCollector;
+import IHM.EventsCollector;
 import IHM.GraphicInterface;
 
 public class Gauffre {
@@ -13,7 +13,7 @@ public class Gauffre {
 		Board p = new Board(10,10);
 		Player p1 = new HumanPlayer();
 		Player p2 = new HumanPlayer();
-		EvenmentsCollector control = new ControlMediator(p,p1,p2);
+		EventsCollector control = new ControlMediator(p,p1,p2);
 		if(true) {
 			game(p,control);
 		}
@@ -22,7 +22,7 @@ public class Gauffre {
 		}
 	}
 
-	private static void game(Board p,EvenmentsCollector control){
+	private static void game(Board p,EventsCollector control){
 		boolean stop = false;
 		Scanner s = new Scanner(System.in);
 		int line,column;

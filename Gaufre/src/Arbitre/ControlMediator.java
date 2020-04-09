@@ -1,8 +1,8 @@
 package Arbitre;
 
-import IHM.EvenmentsCollector;
+import IHM.EventsCollector;
 
-public class ControlMediator implements EvenmentsCollector{
+public class ControlMediator implements EventsCollector{
 	Board gameboard;
 	Player player1;
 	Player player2;

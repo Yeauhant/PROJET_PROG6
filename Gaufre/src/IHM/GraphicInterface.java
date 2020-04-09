@@ -3,10 +3,10 @@ package IHM;
 import Arbitre.Board;
 
 public class GraphicInterface {
-	EvenmentsCollector control;
+	EventsCollector control;
 	Board p;
 	
-	public static void demarrer(Board j, EvenmentsCollector control) {
+	public static void demarrer(Board j, EventsCollector control) {
 	}
 
 }
