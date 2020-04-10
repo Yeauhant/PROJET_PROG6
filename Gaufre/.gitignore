@@ -1,0 +1,11 @@
+# Fichiers binaires
+bin/
+*.class
+
+# Fichiers éditeur
+../.idea/
+.classpath
+.project
+.name
+
+

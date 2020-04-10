@@ -6,7 +6,6 @@ import java.awt.*;
 public class GraphicInterface implements Runnable, UserInterface {
     JFrame f;
     boolean maximized;
-    public final static Dimension BUTTON_MAXSIZE = new Dimension(100,50);
 
     GraphicInterface() {}
 
@@ -25,26 +24,28 @@ public class GraphicInterface implements Runnable, UserInterface {
 
     @Override
     public void run() {
+        // VARIABLES TEMPORAIRES
+        final int COLN = 10;
+        final int ROWN = 10;
+        // ====================
+
+        GameInterface game = new GameInterface(COLN, ROWN);
+        game.fill();
+
         f = new JFrame("Gaufre Empoisonnée");
-
-        f.setContentPane(new GameInterface().panelMain);
-        f.pack();
+        f.setContentPane(game.panelMain);
+        f.setMinimumSize(new Dimension(300+COLN*20,200+ROWN*20));
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // f.setSize(500,300);
-
-        // JButton b = new JButton();
-        // b.setText("Test");
-        // b.setBounds(130,100,100, 40);
-
-        // f.setLayout(null);
+        f.pack();
         f.setVisible(true);
     }
 
+    // FONCTION TEMPORAIRE
     public static void main(String[] args) {
         GraphicInterface g = new GraphicInterface();
-
         g.run();
     }
+    // ===================
 
 
 }
