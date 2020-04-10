@@ -26,8 +26,9 @@ public class GraphicInterface implements Runnable, UserInterface {
     @Override
     public void run() {
         f = new JFrame("Gaufre Empoisonnée");
-
-        f.setContentPane(new StartInterface().StartPanel);
+        GameInterface game = new GameInterface();
+        game.remplissage();
+        f.setContentPane(game.panelMain);
         f.pack();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // f.setSize(500,300);
@@ -36,7 +37,7 @@ public class GraphicInterface implements Runnable, UserInterface {
         // b.setText("Test");
         // b.setBounds(130,100,100, 40);
 
-        // f.setLayout(null);
+         f.setLayout(null);
         f.setVisible(true);
     }
 
