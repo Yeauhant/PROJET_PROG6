@@ -27,7 +27,7 @@ public class GraphicInterface implements Runnable, UserInterface {
     public void run() {
         f = new JFrame("Gaufre Empoisonnée");
 
-        f.setContentPane(new GameInterface().panelMain);
+        f.setContentPane(new StartInterface().StartPanel);
         f.pack();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // f.setSize(500,300);
