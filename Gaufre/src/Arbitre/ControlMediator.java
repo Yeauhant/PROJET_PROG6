@@ -12,7 +12,7 @@ public class ControlMediator implements EventsCollector{
 		gameboard = board;
 		player1 = p1;
 		player2 = p2;
-		sendPlayerCurrent();
+		current = true;
 	}
 	
 	@Override
@@ -20,7 +20,6 @@ public class ControlMediator implements EventsCollector{
 		if(gameboard.play(l, c)) {
 			if(!gameboard.end()) {
 				playerTurn();
-				sendPlayerCurrent();
 			}
 			return true;
 		}
@@ -40,17 +39,32 @@ public class ControlMediator implements EventsCollector{
 		return false;
 	}
 
-	private void sendPlayerCurrent() {
+	@Override
+	public void sendPlayerCurrent() {
 		if(current) {
 			System.out.println("joueur 1, c'est à vous !");
 		}
 		else {
 			System.out.println("joueur 2, c'est à vous !");
 		}
-		
 	}
 
 	private void playerTurn() {
 		current = !current;
+	}
+
+	@Override
+	public void changeGameBoard(Board p) {
+		gameboard = p;
+	}
+
+	@Override
+	public void playerChange(int index) {
+		if(index % 2 == 0) {
+			current = true;
+		}
+		else {
+			current = false;
+		}
 	}
 }

@@ -2,7 +2,9 @@ import java.util.Scanner;
 
 import Arbitre.Board;
 import Arbitre.ControlMediator;
+import Arbitre.History;
 import Arbitre.HumanPlayer;
+import Arbitre.Move;
 import Arbitre.Player;
 import IHM.EventsCollector;
 import IHM.GraphicInterface;
@@ -24,18 +26,39 @@ public class Gauffre {
 
 	private static void game(Board p,EventsCollector control){
 		boolean stop = false;
+		History h = new History(p.get_height(),p.get_width());
 		Scanner s = new Scanner(System.in);
-		int line,column;
+		int line = -1;
+		int column = -1;
 		boolean goodPlace = false;
 		while(!stop) {
+			control.sendPlayerCurrent();
 			printGame(p);
-			goodPlace = false;
-			while(!goodPlace) {
-				line = s.nextInt();
-				column = s.nextInt();
-				goodPlace = control.MouseClick(line, column);
+			System.out.println("voulez vous retourner en arrière ?");
+			if(s.nextInt() == 1) {
+				h.printPast();
+				System.out.println("avant quelle etape ?");
+				control.changeGameBoard(h.undo(s.nextInt(),p));
 			}
-			stop = control.endGame();
+			else {
+				System.out.println("voulez vous retourner en avant ?");
+				if(s.nextInt() == 1) {
+					h.printFutur();
+					System.out.println("après quelle etape ?");
+					control.changeGameBoard(h.redo(s.nextInt(),p));
+				}
+				else {
+					goodPlace = false;
+					while(!goodPlace) {
+						System.out.println("entrez la ligne puis la colonne de votre prochain coup");
+						line = s.nextInt();
+						column = s.nextInt();
+						goodPlace = control.MouseClick(line, column);
+					}
+					h.addMove(new Move(line,column));
+					stop = control.endGame();
+				}
+			}
 		}
 		System.out.println("fin");
 		s.close();
