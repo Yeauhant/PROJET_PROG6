@@ -1,9 +1,9 @@
 package ai;
 
-import Arbitre.Plateau;
+import Arbitre.Board;
 
-abstract class AI {
-	protected Plateau game;
+public abstract class AI {
+	protected Board game;
 	
-	abstract boolean move();
+	public abstract boolean move();
 }

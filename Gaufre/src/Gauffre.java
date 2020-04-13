@@ -55,7 +55,7 @@ public class Gauffre {
 						column = s.nextInt();
 						goodPlace = control.MouseClick(line, column);
 					}
-					h.addMove(new Move(line,column));
+					h.addMove(new Move(line,column, true));
 					stop = control.endGame();
 				}
 			}
