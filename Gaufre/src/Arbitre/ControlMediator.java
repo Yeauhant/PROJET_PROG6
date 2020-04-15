@@ -42,10 +42,10 @@ public class ControlMediator implements EventsCollector{
 	@Override
 	public void sendPlayerCurrent() {
 		if(current) {
-			System.out.println("joueur 1, c'est à vous !");
+			System.out.println("joueur 1, c'est ï¿½ vous !");
 		}
 		else {
-			System.out.println("joueur 2, c'est à vous !");
+			System.out.println("joueur 2, c'est ï¿½ vous !");
 		}
 	}
 
@@ -60,11 +60,6 @@ public class ControlMediator implements EventsCollector{
 
 	@Override
 	public void playerChange(int index) {
-		if(index % 2 == 0) {
-			current = true;
-		}
-		else {
-			current = false;
-		}
+		current = index % 2 == 0;
 	}
 }

@@ -1,12 +1,12 @@
 package Arbitre;
 
 public class Board implements Cloneable{
-	private boolean tab[][];
-	private int height;
-	private int width;
+	private boolean[][] tab;
+	private final int height;
+	private final int width;
 	
 	
-	// tab est initialisé à la taille demandée et remplis de true
+	// tab est initialisï¿½ ï¿½ la taille demandï¿½e et remplis de true
 	public Board(int height,int width) {
 		tab = new boolean[height][width];
 		for(int i = 0 ; i < height ; i++) {
@@ -18,7 +18,7 @@ public class Board implements Cloneable{
 		this.width = width;
 	}
 	
-	// ligne et colonne sont des indices (0 à hauteur-1 et 0 à largeur-1)
+	// ligne et colonne sont des indices (0 ï¿½ hauteur-1 et 0 ï¿½ largeur-1)
 	public boolean caseValue(int line , int column) {
 		return tab[line][column];
 	}

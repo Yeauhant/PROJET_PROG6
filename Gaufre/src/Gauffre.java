@@ -34,7 +34,7 @@ public class Gauffre {
 		while(!stop) {
 			control.sendPlayerCurrent();
 			printGame(p);
-			System.out.println("voulez vous retourner en arrière ?");
+			System.out.println("voulez vous retourner en arriï¿½re ?");
 			if(s.nextInt() == 1) {
 				h.printPast();
 				System.out.println("avant quelle etape ?");
@@ -44,7 +44,7 @@ public class Gauffre {
 				System.out.println("voulez vous retourner en avant ?");
 				if(s.nextInt() == 1) {
 					h.printFutur();
-					System.out.println("après quelle etape ?");
+					System.out.println("aprï¿½s quelle etape ?");
 					control.changeGameBoard(h.redo(s.nextInt(),p));
 				}
 				else {
