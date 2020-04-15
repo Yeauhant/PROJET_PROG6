@@ -7,12 +7,12 @@ public class ControlMediator implements EventsCollector{
 	Player player1;
 	Player player2;
 	boolean current;
+	History h;
 	
-	public ControlMediator(Board board,Player p1,Player p2) {
+	public ControlMediator(Board board,History h) {
 		gameboard = board;
-		player1 = p1;
-		player2 = p2;
 		current = true;
+		this.h = h;
 	}
 	
 	@Override
@@ -42,14 +42,15 @@ public class ControlMediator implements EventsCollector{
 	@Override
 	public void sendPlayerCurrent() {
 		if(current) {
-			System.out.println("joueur 1, c'est à vous !");
+			player1.takeTurn(h,gameboard);
 		}
 		else {
-			System.out.println("joueur 2, c'est à vous !");
+			player2.takeTurn(h,gameboard);
 		}
 	}
 
-	private void playerTurn() {
+	@Override
+	public void playerTurn() {
 		current = !current;
 	}
 
@@ -66,5 +67,37 @@ public class ControlMediator implements EventsCollector{
 		else {
 			current = false;
 		}
+	}
+
+
+	@Override
+	public void printGame() {
+		System.out.print("  ");
+		for(int j = 0 ; j < gameboard.get_width() ; j++) {
+			System.out.print(j + " ");
+		}
+		System.out.println();
+		for(int i = 0 ; i < gameboard.get_height() ; i++) {
+			System.out.print(i + " ");
+			for(int j = 0 ; j < gameboard.get_height() ; j++) {
+				if(gameboard.caseValue(i, j)) {
+					System.out.print("1 ");
+				}
+				else {
+					System.out.print("0 ");
+				}				
+			}
+			System.out.println();
+		}
+	}
+
+	@Override
+	public void addPlayer1(Player p1) {
+		player1 = p1;
+	}
+
+	@Override
+	public void addPlayer2(Player p2) {
+		player2 = p2;
 	}
 }
