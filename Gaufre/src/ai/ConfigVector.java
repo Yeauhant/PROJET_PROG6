@@ -13,16 +13,16 @@ import Arbitre.Board;
 
 public class ConfigVector {
 
-	Vector<Character> Vect;
+	Vector<Integer> Vect;
 	
-	public ConfigVector(Board Game, char Turn){
-		Vect = new Vector<Character>(Game.get_height()+Game.get_width()+1);
+	public ConfigVector(Board Game, int Turn){
+		Vect = new Vector<Integer>(Game.get_height()+Game.get_width()+1);
 		
-		Assemble(Game, Turn);		
+		Assemble(Game, Turn);
 	}
 	
-	private void Assemble(Board Game, char Turn){
-		Vect.add(Turn);
+	private void Assemble(Board Game, int turn){
+		Vect.add(turn);
 		
 		/*
 		 * On construit le profil en parcourant le plateau.
@@ -31,26 +31,26 @@ public class ConfigVector {
 		 * vers la droite.
 		 * Sinon, on y ajoute 1 et on va vers le haut.
 		 */
-		int l = Game.get_height(), c = 0;
+		int l = Game.get_height() -1 , c = 0;
 		
-		while (l >= 0 && c < Game.get_width()){
+		while (l >= 0 || c < Game.get_width()){
 			/* On est tout en haut. On va à droite. */
 			if(l < 0){
-				Vect.add((char) 0);
+				Vect.add(0);
 				c++;
 			}
 			/* On est tout à droite. On va en haut. */
 			else if (c >= Game.get_width()) {
-				Vect.add((char) 1);
+				Vect.add(1);
 				l--;
 			}
 			/* Sinon, on regarde s'il y a un carré de gaufre ici. */
 			else {
 				if(Game.caseValue(l, c)){
-					Vect.add((char) 0);
+					Vect.add(0);
 					c++;					
 				} else {
-					Vect.add((char) 1);
+					Vect.add(1);
 					l--;
 				}
 			}
@@ -59,4 +59,27 @@ public class ConfigVector {
 		
 	}
 	
+	/*
+	 * Methode de test.
+	 */
+	
+	/*
+	public static void main(String[] args) {
+		int i;
+		Board G = new Board(10, 10);
+		
+		ConfigVector V = new ConfigVector(G, (char) 1);
+		for(i = 0 ; i < V.Vect.size() ; i++){
+			System.out.print(V.Vect.get(i) + " ");
+		}
+		System.out.println();
+		
+		G.play(3, 6);
+		V = new ConfigVector(G, 0);
+		for(i = 0 ; i < V.Vect.size() ; i++){
+			System.out.print(V.Vect.get(i) + " ");
+		}
+		System.out.println("Fini.");
+	}
+	*/
 }
