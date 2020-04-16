@@ -19,9 +19,7 @@ public class HumanPlayer implements Player{
 		Scanner s = new Scanner(System.in);
 		control.printGame();
 		System.out.println("voulez vous retourner en arrière ?");
-		if(s == null) {
-			System.out.println("couille");
-		}
+
 		if(s.nextInt() == 1) {
 			h.printPast();
 			System.out.println("avant quelle etape ?");
