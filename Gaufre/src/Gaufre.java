@@ -19,18 +19,18 @@ public class Gaufre {
 		History h = new History(p.get_height(),p.get_width());
 		EventsCollector control = new ControlMediator(p,h);
 		if(s.nextInt() == 1) {
-			p1 = new HumanPlayer(control);
+			p1 = new HumanPlayer(control,s,"Jean");
 			p2 = new AIPlayer(control);
 		}
 		else {
-			p1 = new HumanPlayer(control);
-			p2 = new HumanPlayer(control);
+			p1 = new HumanPlayer(control,s,"Jean");
+			p2 = new HumanPlayer(control,s,"Jacques");
 		}
 		control.addPlayer1(p1);
 		control.addPlayer2(p2);
-		s.close();
 		if(true) {
 			game(control);
+			s.close();
 		}
 		else {
 			//GraphicInterface.demarrer(p, control);
@@ -41,7 +41,7 @@ public class Gaufre {
 		boolean stop = false;
 		while(!stop) {
 			control.sendPlayerCurrent();
-			control.playerTurn();
+			stop = control.endGame();
 		}
 		System.out.println("fin");
 	}
