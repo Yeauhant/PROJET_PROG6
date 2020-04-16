@@ -1,8 +1,8 @@
 package ai;
 
-import ai.Node;
-
 import java.util.ArrayList;
+
+import ai.Node;
 
 public class Tree<E> {
 	

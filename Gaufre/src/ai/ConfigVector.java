@@ -13,16 +13,16 @@ import Arbitre.Board;
 
 public class ConfigVector {
 
-	Vector<Integer> Vect;
+	Vector<Integer> vect;
 	
 	public ConfigVector(Board Game, int Turn){
-		Vect = new Vector<Integer>(Game.get_height()+Game.get_width()+1);
+		vect = new Vector<Integer>(Game.get_height()+Game.get_width()+1);
 		
 		Assemble(Game, Turn);
 	}
 	
 	private void Assemble(Board Game, int turn){
-		Vect.add(turn);
+		vect.add(turn);
 		
 		/*
 		 * On construit le profil en parcourant le plateau.
@@ -36,21 +36,21 @@ public class ConfigVector {
 		while (l >= 0 || c < Game.get_width()){
 			/* On est tout en haut. On va à droite. */
 			if(l < 0){
-				Vect.add(0);
+				vect.add(0);
 				c++;
 			}
 			/* On est tout à droite. On va en haut. */
 			else if (c >= Game.get_width()) {
-				Vect.add(1);
+				vect.add(1);
 				l--;
 			}
 			/* Sinon, on regarde s'il y a un carré de gaufre ici. */
 			else {
 				if(Game.caseValue(l, c)){
-					Vect.add(0);
+					vect.add(0);
 					c++;					
 				} else {
-					Vect.add(1);
+					vect.add(1);
 					l--;
 				}
 			}
