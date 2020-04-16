@@ -14,4 +14,9 @@ public class ConfigNode {
 	public boolean win() {
 		return win;
 	}
+	
+	public ConfigVector config() {
+		return config;
+	}
+	
 }
