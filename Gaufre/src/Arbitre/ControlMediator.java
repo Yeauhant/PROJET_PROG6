@@ -61,7 +61,7 @@ public class ControlMediator implements EventsCollector{
 
 	@Override
 	public void playerChange(int index) {
-		if(index % 2 == 0) {
+		if(index % 2 == 1) {
 			current = true;
 		}
 		else {

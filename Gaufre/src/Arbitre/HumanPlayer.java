@@ -6,9 +6,13 @@ import IHM.EventsCollector;
 
 public class HumanPlayer implements Player{
 	EventsCollector control;
+	Scanner entry;
+	String name;
 	
-	public HumanPlayer(EventsCollector c) {
+	public HumanPlayer(EventsCollector c, Scanner s,String n) {
 		control = c;
+		entry = s;
+		name = n;
 	}
 
 	@Override
@@ -16,35 +20,31 @@ public class HumanPlayer implements Player{
 		int column = -1;
 		int line = -1;
 		boolean goodPlace = false;
-		Scanner s = new Scanner(System.in);
 		control.printGame();
+		System.out.println(name);
 		System.out.println("voulez vous retourner en arrière ?");
-		if(s == null) {
-			System.out.println("couille");
-		}
-		if(s.nextInt() == 1) {
+		if(entry.nextInt() == 1) {
 			h.printPast();
 			System.out.println("avant quelle etape ?");
-			control.changeGameBoard(h.undo(s.nextInt(),p));
+			control.changeGameBoard(h.undo(entry.nextInt(),p));
 		}
 		else {
 			System.out.println("voulez vous retourner en avant ?");
-			if(s.nextInt() == 1) {
+			if(entry.nextInt() == 1) {
 				h.printFutur();
 				System.out.println("après quelle etape ?");
-				control.changeGameBoard(h.redo(s.nextInt(),p));
+				control.changeGameBoard(h.redo(entry.nextInt(),p));
 			}
 			else {
 				while(!goodPlace) {
 					System.out.println("entrez la ligne puis la colonne de votre prochain coup");
-					line = s.nextInt();
-					column = s.nextInt();
+					line = entry.nextInt();
+					column = entry.nextInt();
 					goodPlace = control.MouseClick(line, column);
 				}
 				h.addMove(new Move(line,column));
 			}
 		}
-		s.close();
 	}
 	
 }
