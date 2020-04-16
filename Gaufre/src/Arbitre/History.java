@@ -5,46 +5,43 @@ import java.util.Iterator;
 import java.util.List;
 
 public class History {
-	List<Move> past;
-	List<Move> futur;
+	public List<Move> past;
+	public List<Move> future;
 	int height;
 	int width;
 	
 	public History(int h, int w) {
 		past = new ArrayList<Move>();
+		future = new ArrayList<Move>();
 		height = h;
 		width = w;
 	}
 	
 	public void addMove(Move m) {
 		past.add(m);
-		futur = null;
 	}
 	
-	public Board undo(int index,Board b) {
-		if(index < past.size()) {
-			futur = past.subList(index, past.size());
+	public Board undo(int index, Board b) {
+		if(index < past.size() && index >= 0) {
+			future = past.subList(index, past.size());
 			past = past.subList(0, index);
 			b = new Board(height,width);
-			for(int i = 0 ; i < index ; i++) {
+			for(int i = 0 ; i < index ; i++)
 				b.play(past.get(i).line,past.get(i).column);
-			}
-			return b;
 		}
 		return b;
 	}
 	
-	public Board redo(int index,Board b) {
-		int size = futur.size();
-		if(index < size) {
+	public Board redo(int index, Board b) {
+		int size = future.size();
+		if(index < size && size > 0) {
 			Move m;
 			for(int i = 0 ; i <= index ; i++) {
-				m = futur.get(i);
+				m = future.get(i);
 				past.add(m);
 				b.play(m.line, m.column);
 			}
-			futur = futur.subList(index + 1 , size);
-			return b;
+			future = future.subList(index + 1 , size);
 		}
 		return b;
 	}
@@ -65,8 +62,8 @@ public class History {
 	}
 	
 	public void printFutur() {
-		if(futur != null) {
-			Iterator<Move> i = futur.iterator();
+		if(future != null) {
+			Iterator<Move> i = future.iterator();
 			Move m;
 			int j = 0;
 			while(i.hasNext()) {

@@ -1,7 +1,7 @@
 package Arbitre;
 
 public class Board implements Cloneable{
-	private boolean[][] tab;
+	public boolean[][] tab;
 	private final int height;
 	private final int width;
 	
@@ -25,8 +25,8 @@ public class Board implements Cloneable{
 	
 	// ligne et colonne sont des indices
 	public boolean play(int line , int column) {
-		if(line >= height || line < 0 || column >= height || column < 0) {
-			System.out.println("il faut jouer sur le plateau !");
+		if(line >= height || line < 0 || column >= width || column < 0) {
+			System.out.println("Il faut jouer sur le plateau !");
 			return false;
 		}
 		else {
@@ -39,7 +39,7 @@ public class Board implements Cloneable{
 				return true;
 			}
 			else {
-				System.out.println("cette case est deja mangee !");
+				System.out.println("Cette case est déjà mangée !");
 				return false;
 			}
 		}

@@ -17,8 +17,7 @@ public class HumanPlayer implements Player{
 
 	@Override
 	public void takeTurn(History h, Board p) {
-		/*
-		int column = -1;
+		/*int column = -1;
 		int line = -1;
 		boolean goodPlace = false;
 		control.printGame();
@@ -47,8 +46,7 @@ public class HumanPlayer implements Player{
 				}
 				h.addMove(new Move(line,column));
 			}
-		}
-		 */
+		}*/
 	}
 
 	@Override

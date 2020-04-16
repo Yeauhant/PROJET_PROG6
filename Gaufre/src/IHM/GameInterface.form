@@ -23,7 +23,7 @@
           </component>
         </children>
       </scrollpane>
-      <component id="ef9c7" class="javax.swing.JButton" binding="annulerButton" default-binding="true">
+      <component id="ef9c7" class="javax.swing.JButton" binding="undoButton">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -32,7 +32,7 @@
           <text value="Annuler"/>
         </properties>
       </component>
-      <component id="c18cb" class="javax.swing.JButton" binding="sauvegarderButton" default-binding="true">
+      <component id="c18cb" class="javax.swing.JButton" binding="saveButton">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -40,7 +40,7 @@
           <text value="Sauvegarder"/>
         </properties>
       </component>
-      <component id="95924" class="javax.swing.JButton" binding="chargerButton" default-binding="true">
+      <component id="95924" class="javax.swing.JButton" binding="loadButton">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -57,7 +57,7 @@
         <border type="none"/>
         <children/>
       </grid>
-      <component id="280a" class="javax.swing.JButton" binding="refaireButton" default-binding="true">
+      <component id="280a" class="javax.swing.JButton" binding="redoButton">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

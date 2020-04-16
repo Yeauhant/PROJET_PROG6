@@ -1,14 +1,16 @@
 package IHM;
 
+import Arbitre.ControlMediator;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class GameInterface {
     public JPanel panelMain;
-    private JButton annulerButton;
-    private JButton sauvegarderButton;
-    private JButton chargerButton;
-    private JButton refaireButton;
+    private JButton undoButton;
+    private JButton saveButton;
+    private JButton loadButton;
+    private JButton redoButton;
     public JList moveList;
     public JPanel gamePanel;
     public JButton[][] gameButtons;
@@ -18,12 +20,19 @@ public class GameInterface {
     public EventsCollector ec;
 
     GameInterface(int cols, int rows, EventsCollector ec){
-        moveList.setMaximumSize(new Dimension((int)(panelMain.getWidth()*0.25), (int)(panelMain.getHeight()*0.9)));
-        moveList.setPreferredSize(new Dimension((int)(panelMain.getWidth()*0.25), (int)(panelMain.getHeight()*0.9)));
         this.cols = cols;
         this.rows = rows;
         this.ec = ec;
         this.gameButtons = new JButton[cols][rows];
+
+        moveList.setMaximumSize(new Dimension((int)(panelMain.getWidth()*0.25), (int)(panelMain.getHeight()*0.9)));
+        moveList.setPreferredSize(new Dimension((int)(panelMain.getWidth()*0.25), (int)(panelMain.getHeight()*0.9)));
+        undoButton.addMouseListener(new UndoMouseAdapter((ControlMediator) ec, this));
+        redoButton.addMouseListener(new RedoMouseAdapter((ControlMediator) ec, this));
+        // TODO
+        saveButton.setEnabled(false);
+        loadButton.setEnabled(false);
+        //----
     }
 
     public static String caseName(int c, int l) {
@@ -44,7 +53,6 @@ public class GameInterface {
         gamePanel.setLayout(new GridLayout(rows+1, cols+1));
         for (int i = 0; i <= rows; i++){
             JLabel l;
-            JButton b;
             String t;
             if (i == 0) t = "";
             else t = ""+i;
@@ -62,11 +70,12 @@ public class GameInterface {
                     l.setVerticalAlignment(0);
                     gamePanel.add(l);
                 } else {
+                    JButton b;
                     b = new JButton();
                     b.setName(i+":"+j);
                     b.setMinimumSize(new Dimension(20, 20));
-                    b.addMouseListener(new PlayMouseAdapter(ec, this));
-                    gameButtons[i-1][j-1] = b;
+                    b.addMouseListener(new PlayMouseAdapter((ControlMediator) ec, this));
+                    gameButtons[j-1][i-1] = b;
                     gamePanel.add(b);
                 }
             }

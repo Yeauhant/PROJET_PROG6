@@ -11,11 +11,20 @@ public class GraphicInterface implements Runnable, UserInterface {
     Board b;
     EventsCollector ec;
 
-
     public GraphicInterface() {}
     public GraphicInterface(Board b, EventsCollector ec){
         this.b = b;
         this.ec = ec;
+    }
+
+    // Fonction de mise à jour de la gaufre graphique
+    public static boolean refreshGraphicBoard(Board b, GameInterface gi) {
+        if (b.tab[0].length != gi.gameButtons.length || b.tab.length != gi.gameButtons[0].length) return false;
+        for (int i = 0; i < b.tab.length; i++)
+            for (int j = 0; j < b.tab[i].length; j++)
+                gi.gameButtons[j][i].setVisible(b.tab[i][j]);
+
+        return true;
     }
 
     @Override
@@ -33,28 +42,14 @@ public class GraphicInterface implements Runnable, UserInterface {
 
     @Override
     public void run() {
-        // VARIABLES TEMPORAIRES
-        final int COLN = b.get_width();
-        final int ROWN = b.get_height();
-        // ====================
-
-        GameInterface gi = new GameInterface(COLN, ROWN, ec);
+        GameInterface gi = new GameInterface(b.get_width(), b.get_height(), ec);
         gi.fill();
 
         f = new JFrame("Gaufre Empoisonnée");
         f.setContentPane(gi.panelMain);
-        f.setMinimumSize(new Dimension(300+COLN*20,200+ROWN*20));
+        f.setMinimumSize(new Dimension(300+b.get_width()*20,200+b.get_height()*20));
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();
         f.setVisible(true);
     }
-
-    // FONCTION TEMPORAIRE
-    public static void main(String[] args) {
-        GraphicInterface g = new GraphicInterface();
-        g.run();
-    }
-    // ===================
-
-
 }

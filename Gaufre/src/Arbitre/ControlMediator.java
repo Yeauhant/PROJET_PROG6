@@ -27,25 +27,25 @@ public class ControlMediator implements EventsCollector{
 	}
 
 	public boolean endGame() {
-		if(gameboard.end()) {
-			if(current) {
-				System.out.println("joueur 1 vous avez perdu !");
+		boolean e = gameboard.end();
+		if (e) {
+			if (current) {
+				System.out.println(((HumanPlayer) player1).name+" (joueur 1), vous avez perdu !");
 			}
 			else {
-				System.out.println("joueur 2 vous avez perdu !");
+				System.out.println(((HumanPlayer) player2).name+" (joueur 2), vous avez perdu !");
 			}
-			return true;
 		}
-		return false;
+		return e;
 	}
 
 	@Override
 	public void sendPlayerCurrent() {
 		if(current) {
-			player1.takeTurn(h,gameboard);
+			player1.takeTurn(h, gameboard);
 		}
 		else {
-			player2.takeTurn(h,gameboard);
+			player2.takeTurn(h, gameboard);
 		}
 	}
 
