@@ -1,18 +1,19 @@
 package Arbitre;
 
+import IHM.EventsCollector;
 import ai.AIType;
 import ai.AI;
 import ai.AIRandom;
 
 public class AIPlayer implements Player {
 
-	AI player;
+	AIPlayer player;
 	
 	
-	AIPlayer(AIType type, Board game){
+	AIPlayer(AIType type, EventsCollector c){
 		switch(type){
 		case RANDOM:
-			player = new AIRandom(game);
+			player = new AIRandom(c);
 			break;
 		}
 	}
