@@ -4,7 +4,7 @@ public class Move {
 	int line;
 	int column;
 	
-	public Move(int l , int c,boolean p) {
+	public Move(int l , int c) {
 		line = l;
 		column = c;
 	}
