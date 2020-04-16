@@ -1,6 +1,11 @@
-
+# Eclipse
 Gaufre/.classpath
-
 Gaufre/.project
 
+# IntelliJ
+.idea/
+
+# Binaires
 Gaufre/bin/
+*.class
+
