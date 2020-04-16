@@ -1,19 +1,20 @@
-package IA;
+package ai;
 
 import Arbitre.Board;
 import Arbitre.History;
 import Arbitre.Player;
 import IHM.EventsCollector;
 
-public class IAPlayer implements Player{
+public class AIPlayer implements Player{
 	EventsCollector control;
 	
-	public IAPlayer(EventsCollector c) {
+	public AIPlayer(EventsCollector c) {
 		control = c;
 	}
 	
 	@Override
 	public void takeTurn(History h, Board gameboard) {	
+		
 	}
 	
 }

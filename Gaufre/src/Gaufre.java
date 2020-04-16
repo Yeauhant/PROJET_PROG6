@@ -1,15 +1,15 @@
 import java.util.Scanner;
 
+import ai.AIPlayer;
 import Arbitre.Board;
 import Arbitre.ControlMediator;
 import Arbitre.History;
 import Arbitre.HumanPlayer;
 import Arbitre.Player;
-import IA.IAPlayer;
 import IHM.EventsCollector;
 import IHM.GraphicInterface;
 
-public class Gauffre {
+public class Gaufre {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Board p = new Board(10,10);
@@ -20,7 +20,7 @@ public class Gauffre {
 		EventsCollector control = new ControlMediator(p,h);
 		if(s.nextInt() == 1) {
 			p1 = new HumanPlayer(control);
-			p2 = new IAPlayer(control);
+			p2 = new AIPlayer(control);
 		}
 		else {
 			p1 = new HumanPlayer(control);
@@ -33,7 +33,7 @@ public class Gauffre {
 			game(control);
 		}
 		else {
-			GraphicInterface.demarrer(p, control);
+			//GraphicInterface.demarrer(p, control);
 		}
 	}
 	
