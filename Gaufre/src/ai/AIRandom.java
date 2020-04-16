@@ -2,8 +2,10 @@ package ai;
 
 import java.util.Random;
 
+import ai.AI;
 import Arbitre.Board;
 import Arbitre.History;
+import Arbitre.Move;
 import IHM.EventsCollector;
 
 /*
@@ -11,8 +13,7 @@ import IHM.EventsCollector;
  * Joue des coups aléatoires dans la grille game donné à sa construction.
  * Ne choisis jamais le carré empoisonné, sauf si elle n'a pas le choix
  */
-public class AIRandom extends AIPlayer {
-	
+public class AIRandom extends AI {
 	Random r;
 	
 	public AIRandom(EventsCollector c) {
@@ -20,8 +21,6 @@ public class AIRandom extends AIPlayer {
 		r = new Random();
 	}
 
-
-	@Override
 	public void takeTurn(History h, Board gameboard) {
 		if (!gameboard.caseValue(0, 1) && !gameboard.caseValue(1, 0)) {
 			gameboard.play(0, 0); // Pas d'autre choix
@@ -36,7 +35,10 @@ public class AIRandom extends AIPlayer {
 					// Si la case n'est pas celle empoisonnée..
 					if (gameboard.caseValue(l, c)) {
 						// Et qu'elle n'a pas été mangée, alors on joue le coup
+						System.out.println("IA : coup joué en " + l + ", " + c);
 						gameboard.play(l, c);
+						h.addMove(new Move(l,c));
+						control.playerTurn();
 						return;
 					}
 				}

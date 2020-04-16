@@ -7,20 +7,21 @@ import ai.AIRandom;
 
 public class AIPlayer implements Player {
 
-	AIPlayer player;
+	AI player;
 	
-	
-	AIPlayer(AIType type, EventsCollector c){
+	public AIPlayer(AIType type, EventsCollector c){
 		switch(type){
 		case RANDOM:
-			player = new AIRandom(c);
+			AIRandom tmp = new AIRandom(c);
+			player = tmp;
 			break;
 		}
 	}
 	
 	@Override
 	public void takeTurn(History h, Board gameboard) {
-		while(!player.move());		
+		player.takeTurn(h, gameboard);		
 	}
 
 }
+
