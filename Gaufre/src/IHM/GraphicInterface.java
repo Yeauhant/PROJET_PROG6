@@ -1,13 +1,22 @@
 package IHM;
 
+import Arbitre.Board;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class GraphicInterface implements Runnable, UserInterface {
     JFrame f;
     boolean maximized;
+    Board b;
+    EventsCollector e;
 
-    GraphicInterface() {}
+
+    public GraphicInterface() {}
+    public GraphicInterface(Board b, EventsCollector e){
+        this.b = b;
+        this.e = e;
+    }
 
     @Override
     public void ToggleFullScreen() {
@@ -25,8 +34,8 @@ public class GraphicInterface implements Runnable, UserInterface {
     @Override
     public void run() {
         // VARIABLES TEMPORAIRES
-        final int COLN = 10;
-        final int ROWN = 10;
+        final int COLN = b.get_width();
+        final int ROWN = b.get_height();
         // ====================
 
         GameInterface game = new GameInterface(COLN, ROWN);
