@@ -9,7 +9,7 @@ public class HumanPlayer implements Player{
 	Scanner entry;
 	String name;
 	
-	public HumanPlayer(EventsCollector c, Scanner s,String n) {
+	public HumanPlayer(EventsCollector c, Scanner s, String n) {
 		control = c;
 		entry = s;
 		name = n;
@@ -17,12 +17,14 @@ public class HumanPlayer implements Player{
 
 	@Override
 	public void takeTurn(History h, Board p) {
+		/*
 		int column = -1;
 		int line = -1;
 		boolean goodPlace = false;
 		control.printGame();
 		System.out.println(name);
-		System.out.println("voulez vous retourner en arrière ?");
+
+		System.out.println("voulez vous retourner en arriÃ¨re ?");
 
 		if(entry.nextInt() == 1) {
 			h.printPast();
@@ -33,7 +35,7 @@ public class HumanPlayer implements Player{
 			System.out.println("voulez vous retourner en avant ?");
 			if(entry.nextInt() == 1) {
 				h.printFutur();
-				System.out.println("après quelle etape ?");
+				System.out.println("aprÃ¨s quelle etape ?");
 				control.changeGameBoard(h.redo(entry.nextInt(),p));
 			}
 			else {
@@ -46,6 +48,12 @@ public class HumanPlayer implements Player{
 				h.addMove(new Move(line,column));
 			}
 		}
+		 */
 	}
-	
+
+	@Override
+	public boolean move() {
+		return false;
+	}
+
 }

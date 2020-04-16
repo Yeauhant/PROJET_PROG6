@@ -1,4 +1,4 @@
-package ai;
+package AI;
 
 import java.util.Random;
 
@@ -8,8 +8,8 @@ import IHM.EventsCollector;
 
 /*
  * Classe AIRandom
- * Joue des coups aléatoires dans la grille game donné à sa construction.
- * Ne choisis jamais le carré empoisonné, sauf si elle n'a pas le choix
+ * Joue des coups alÃ©atoires dans la grille game donnÃ© Ã  sa construction.
+ * Ne choisis jamais le carrÃ© empoisonnÃ©, sauf si elle n'a pas le choix
  */
 public class AIRandom extends AIPlayer {
 	
@@ -29,13 +29,13 @@ public class AIRandom extends AIPlayer {
 			int l, c;
 			int lmax = gameboard.get_height(), cmax = gameboard.get_width();
 			while (true) {
-				// On tire une case à jouer.
+				// On tire une case Ã  jouer.
 				l = r.nextInt(lmax);
 				c = r.nextInt(cmax);
 				if (c != 0 || l != 0) {
-					// Si la case n'est pas celle empoisonnée..
+					// Si la case n'est pas celle empoisonnÃ©e...
 					if (gameboard.caseValue(l, c)) {
-						// Et qu'elle n'a pas été mangée, alors on joue le coup
+						// Et qu'elle n'a pas ï¿½tï¿½ mangÃ©e, alors on joue le coup
 						gameboard.play(l, c);
 						return;
 					}
@@ -44,7 +44,6 @@ public class AIRandom extends AIPlayer {
 			}
 
 		}
-		// Un problème est survenu.
-		return;
+		// Un problÃ¨me est survenu.
 	}
 }

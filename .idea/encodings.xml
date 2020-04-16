@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Gaufre/src/Arbitre/Board.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Gaufre/src/Arbitre/ControlMediator.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Gaufre/src/Arbitre/HumanPlayer.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Gaufre/src/Gauffre.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Gaufre/src/Plateau.java" charset="UTF-8" />
   </component>

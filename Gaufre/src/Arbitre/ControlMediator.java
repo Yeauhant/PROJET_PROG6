@@ -3,13 +3,13 @@ package Arbitre;
 import IHM.EventsCollector;
 
 public class ControlMediator implements EventsCollector{
-	Board gameboard;
-	Player player1;
-	Player player2;
-	boolean current;
-	History h;
+	public Board gameboard;
+	public Player player1;
+	public Player player2;
+	public boolean current;
+	public History h;
 	
-	public ControlMediator(Board board,History h) {
+	public ControlMediator(Board board, History h) {
 		gameboard = board;
 		current = true;
 		this.h = h;

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import ai.AIPlayer;
+import AI.AIPlayer;
 import Arbitre.Board;
 import Arbitre.ControlMediator;
 import Arbitre.History;
@@ -9,15 +9,18 @@ import Arbitre.Player;
 import IHM.EventsCollector;
 import IHM.GraphicInterface;
 
+import javax.swing.*;
+
 public class Gaufre {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
-		Board p = new Board(10,10);
+		Board b = new Board(10,10);
 		Scanner s = new Scanner(System.in);
-		Player p1,p2;
+		Player p1, p2;
 		System.out.println("voulez vous mettre un IA ?");
-		History h = new History(p.get_height(),p.get_width());
-		EventsCollector control = new ControlMediator(p,h);
+		History h = new History(b.get_height(), b.get_width());
+		EventsCollector control = new ControlMediator(b, h);
+
 		if(s.nextInt() == 1) {
 			p1 = new HumanPlayer(control,s,"Jean");
 			p2 = new AIPlayer(control);
@@ -28,12 +31,16 @@ public class Gaufre {
 		}
 		control.addPlayer1(p1);
 		control.addPlayer2(p2);
-		if(true) {
+
+		GraphicInterface g = new GraphicInterface(b, control);
+		SwingUtilities.invokeLater(g);
+
+		if (true) {
 			game(control);
 			s.close();
 		}
 		else {
-			//GraphicInterface.demarrer(p, control);
+			//GraphicInterface.demarrer(b, control);
 		}
 	}
 	
@@ -43,7 +50,7 @@ public class Gaufre {
 			control.sendPlayerCurrent();
 			stop = control.endGame();
 		}
-		System.out.println("fin");
+		System.out.println("Fin de la partie.");
 	}
 
 }

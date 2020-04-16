@@ -1,8 +1,6 @@
-package ai;
+package AI;
 
 import java.util.ArrayList;
-
-import ai.Node;
 
 public class Tree<E> {
 	
@@ -12,7 +10,7 @@ public class Tree<E> {
 		root = new Node<E>(element);
 	}
 	
-	/* Cette fonction prend un élement E elm et 
+	/* Cette fonction prend un ï¿½lement E elm et 
 	 * renvoie toutes les occurences de elm dans l'arbre */
 	public ArrayList<Node<E>> occurence(E element){
 		return occurence(element, root);

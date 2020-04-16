@@ -1,6 +1,4 @@
-package ai;
-
-import ai.ConfigVector;
+package AI;
 
 public class ConfigNode {
 	private boolean win;

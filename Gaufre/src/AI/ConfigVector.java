@@ -1,4 +1,4 @@
-package ai;
+package AI;
 
 import java.util.Vector;
 
@@ -6,8 +6,8 @@ import Arbitre.Board;
 
 /*
  * Classe ConfigVector
- * Construit le vecteur de bits associés à la configuration donnée en argument.
- * Nécessite un plateau et l'id du joueur courant :
+ * Construit le vecteur de bits associï¿½s ï¿½ la configuration donnï¿½e en argument.
+ * Nï¿½cessite un plateau et l'id du joueur courant :
  * 1 si c'est le tour de celui qui construit le vecteur, 0 sinon
  */
 
@@ -26,7 +26,7 @@ public class ConfigVector {
 		
 		/*
 		 * On construit le profil en parcourant le plateau.
-		 * On commence en bas à gauche.
+		 * On commence en bas ï¿½ gauche.
 		 * S'il y a encore une case, on place 0 dans le vecteur et avance
 		 * vers la droite.
 		 * Sinon, on y ajoute 1 et on va vers le haut.
@@ -34,17 +34,17 @@ public class ConfigVector {
 		int l = Game.get_height() -1 , c = 0;
 		
 		while (l >= 0 || c < Game.get_width()){
-			/* On est tout en haut. On va à droite. */
+			/* On est tout en haut. On va ï¿½ droite. */
 			if(l < 0){
 				vect.add(0);
 				c++;
 			}
-			/* On est tout à droite. On va en haut. */
+			/* On est tout ï¿½ droite. On va en haut. */
 			else if (c >= Game.get_width()) {
 				vect.add(1);
 				l--;
 			}
-			/* Sinon, on regarde s'il y a un carré de gaufre ici. */
+			/* Sinon, on regarde s'il y a un carrï¿½ de gaufre ici. */
 			else {
 				if(Game.caseValue(l, c)){
 					vect.add(0);

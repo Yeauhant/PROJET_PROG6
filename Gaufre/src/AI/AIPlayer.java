@@ -1,4 +1,4 @@
-package ai;
+package AI;
 
 import Arbitre.Board;
 import Arbitre.History;
@@ -16,5 +16,10 @@ public class AIPlayer implements Player{
 	public void takeTurn(History h, Board gameboard) {	
 		
 	}
-	
+
+	@Override
+	public boolean move() {
+		return false;
+	}
+
 }

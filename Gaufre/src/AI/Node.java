@@ -1,4 +1,4 @@
-package ai;
+package AI;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ public class Node<E> {
 		nodes = new ArrayList<Node<E>>();
 	}
 	
-	/* Renvoie l'élement du noeud */
+	/* Renvoie l'ï¿½lement du noeud */
 	public E getElement() {
 		return element;
 	}
@@ -23,17 +23,17 @@ public class Node<E> {
 		return nodes;
 	}
 	
-	/* Renvoie un noeud à la liste des fils */
+	/* Renvoie un noeud ï¿½ la liste des fils */
 	public void addNode(E element) {
 		nodes.add(new Node<E>(element));
 	}
 	
-	/* Test si deux noeuds sont égaux c'est à dire si ils ont le même élément */
+	/* Test si deux noeuds sont ï¿½gaux c'est ï¿½ dire si ils ont le mï¿½me ï¿½lï¿½ment */
 	public boolean equals(Node<E> n) {
 		return (element == n.element);
 	}
 	
-	/* Renvoie l'élément du noeud en String */
+	/* Renvoie l'ï¿½lï¿½ment du noeud en String */
 	public String toString() {
 		return element.toString();
 	}

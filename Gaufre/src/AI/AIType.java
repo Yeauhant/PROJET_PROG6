@@ -1,6 +1,6 @@
-package ai;
+package AI;
 
-/* Enumération des types d'IA.*/
+/* Enumï¿½ration des types d'IA.*/
 public enum AIType {
 
 	RANDOM("IA de type RANDOM");

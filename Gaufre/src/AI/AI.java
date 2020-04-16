@@ -1,4 +1,4 @@
-package ai;
+package AI;
 
 import Arbitre.Board;
 

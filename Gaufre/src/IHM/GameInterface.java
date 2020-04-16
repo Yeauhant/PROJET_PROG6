@@ -9,26 +9,31 @@ public class GameInterface {
     private JButton sauvegarderButton;
     private JButton chargerButton;
     private JButton refaireButton;
-    private JList moveList;
-    private JPanel gamePanel;
+    public JList moveList;
+    public JPanel gamePanel;
+    public JButton[][] gameButtons;
+
     public int rows;
     public int cols;
+    public EventsCollector ec;
 
-    GameInterface(int cols, int rows){
+    GameInterface(int cols, int rows, EventsCollector ec){
         moveList.setMaximumSize(new Dimension((int)(panelMain.getWidth()*0.25), (int)(panelMain.getHeight()*0.9)));
         moveList.setPreferredSize(new Dimension((int)(panelMain.getWidth()*0.25), (int)(panelMain.getHeight()*0.9)));
         this.cols = cols;
         this.rows = rows;
+        this.ec = ec;
+        this.gameButtons = new JButton[cols][rows];
     }
 
-    public String caseName(int c, int l) {
+    public static String caseName(int c, int l) {
         String cn = "";
         if (!(c == 0 && l == 0))
             cn = colName(c)+l;
         return cn;
     }
 
-    public String colName(int col) {
+    public static String colName(int col) {
         char c = (char) ((col-1) % 26 + 65);
         if ((col-1)/26 == 0)
             return ""+c;
@@ -58,8 +63,10 @@ public class GameInterface {
                     gamePanel.add(l);
                 } else {
                     b = new JButton();
-                    b.setName(caseName(j, i));
+                    b.setName(i+":"+j);
                     b.setMinimumSize(new Dimension(20, 20));
+                    b.addMouseListener(new PlayMouseAdapter(ec, this));
+                    gameButtons[i-1][j-1] = b;
                     gamePanel.add(b);
                 }
             }

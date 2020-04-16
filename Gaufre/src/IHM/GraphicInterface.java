@@ -9,13 +9,13 @@ public class GraphicInterface implements Runnable, UserInterface {
     JFrame f;
     boolean maximized;
     Board b;
-    EventsCollector e;
+    EventsCollector ec;
 
 
     public GraphicInterface() {}
-    public GraphicInterface(Board b, EventsCollector e){
+    public GraphicInterface(Board b, EventsCollector ec){
         this.b = b;
-        this.e = e;
+        this.ec = ec;
     }
 
     @Override
@@ -38,11 +38,11 @@ public class GraphicInterface implements Runnable, UserInterface {
         final int ROWN = b.get_height();
         // ====================
 
-        GameInterface game = new GameInterface(COLN, ROWN);
-        game.fill();
+        GameInterface gi = new GameInterface(COLN, ROWN, ec);
+        gi.fill();
 
         f = new JFrame("Gaufre Empoisonnée");
-        f.setContentPane(game.panelMain);
+        f.setContentPane(gi.panelMain);
         f.setMinimumSize(new Dimension(300+COLN*20,200+ROWN*20));
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();

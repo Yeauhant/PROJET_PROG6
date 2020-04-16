@@ -1,14 +1,10 @@
-package ai;
+package AI;
 
 import java.util.Random;
 import java.util.Hashtable;
 import java.util.ArrayList;
 
 import Arbitre.Board;
-import ai.Tree;
-import ai.Node;
-import ai.ConfigVector;
-import ai.ConfigNode;
 
 /*
  * Classe AISmart
