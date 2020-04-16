@@ -5,11 +5,12 @@ import java.util.Random;
 import Arbitre.Board;
 
 /*
- * Classe AI_Random
+ * Classe AIRandom
  * Joue des coups aléatoires dans la grille game donné à sa construction.
  * Ne choisis jamais le carré empoisonné, sauf si elle n'a pas le choix
  */
 public class AIRandom extends AI {
+	Board game;
 	Random r;
 
 	public AIRandom(Board game) {
