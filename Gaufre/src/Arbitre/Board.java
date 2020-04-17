@@ -1,0 +1,71 @@
+package Arbitre;
+
+public class Board implements Cloneable{
+	public boolean[][] tab;
+	private final int height;
+	private final int width;
+	
+	
+	// tab est initialis� � la taille demand�e et remplis de true
+	public Board(int height,int width) {
+		tab = new boolean[height][width];
+		for(int i = 0 ; i < height ; i++) {
+			for(int j = 0 ; j < width ; j++) {
+				tab[i][j] = true;
+			}
+		}
+		this.height = height;
+		this.width = width;
+	}
+	
+	// ligne et colonne sont des indices (0 � hauteur-1 et 0 � largeur-1)
+	public boolean caseValue(int line , int column) {
+		return tab[line][column];
+	}
+	
+	// ligne et colonne sont des indices
+	public boolean play(int line , int column) {
+		if(line >= height || line < 0 || column >= width || column < 0) {
+			System.out.println("Il faut jouer sur le plateau !");
+			return false;
+		}
+		else {
+			if(caseValue(line,column)) {
+				for(int i = line ; i < height ; i++) {
+					for(int j = column ; j < width ; j++) {
+						tab[i][j] = false;
+					}
+				}
+				return true;
+			}
+			else {
+				System.out.println("Cette case est déjà mangée !");
+				return false;
+			}
+		}
+	}
+	
+	public int get_height() {
+		return height;
+	}
+	
+	public int get_width() {
+		return width;
+	}
+	
+	public boolean end(){
+		return !tab[0][0];
+	}
+
+	@Override
+	public Board clone() {
+		try {
+			Board res = (Board) super.clone();
+			res.tab = tab.clone();
+			return res;
+		} catch (CloneNotSupportedException e) {
+			System.out.println("echec de clonage");
+		}
+		return null;
+	}
+}
